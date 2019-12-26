@@ -1,0 +1,16 @@
+# CMake
+cmake.bld/
+build/
+build
+
+# VS Code
+.vscode/
+
+.git/
+.*swp
+logs/
+__pycache__/
+logfile
+db/
+venv/
+
