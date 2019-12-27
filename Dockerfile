@@ -4,15 +4,15 @@ RUN adduser -D tutorial
 
 WORKDIR /Users/nillan/Documents/fanatex/python/flask
 
-RUN export PATH="/usr/local/bin:${PATH}"
-
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
+#RUN venv/bin/pip install -r requirements.txt
+#RUN venv/bin/pip install gunicorn
 
 RUN \
  apk add --no-cache postgresql-libs && \
  apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
- python3 -m pip install -r requirements.txt --no-cache-dir && \
+ venv/bin/pip install -r requirements.txt --no-cache-dir && \
  venv/bin/pip install gunicorn && \
  venv/bin/pip install gunicorn postgres && \
  apk --purge del .build-deps
